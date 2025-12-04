@@ -1,8 +1,0 @@
-LOD #10 ; Load 10 into the accumulator
-MUL #2 ; Multiply accumulator by 2 (10 * 2 = 20)
-SUB #5 ; Subtract 5 from accumulator (20 - 5 = 15)
-STO 50 ; Store result (15) in memory location 50
-CMP #0 ; Compare ACC with 0 (sets flags, but ACC remains unchanged)
-JZ 8 ; If ACC is 0, jump to instruction 8 (skip the next step)
-HLT ; Halt execution (if jump was not taken)
-HLT ; Halt execution (if jump was taken)
