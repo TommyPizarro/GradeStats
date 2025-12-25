@@ -1,41 +1,48 @@
 import java.util.Scanner;
+
 public class GradeStats {
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        int totalGrades = 10;
+        // Using a constant improves readability
+        final int TOTAL_GRADES = 10;
 
-        System.out.print("Enter grade 1: ");
-        double firstGrade = input.nextDouble();
+        // Using an array allows us to store all grades and loop through them.
+        double[] grades = new double[TOTAL_GRADES];
 
-        double sum = firstGrade;
-        double max = firstGrade;
-        double min = firstGrade;
+        // Loop to collect all grades from the user
+        for (int i = 0; i < TOTAL_GRADES; i++) {
+            System.out.print("Enter grade " + (i + 1) + ": ");
+            grades[i] = input.nextDouble();
+        }
+        // This avoids needing a separate "firstGrade" variable.
+        double sum = grades[0];
+        double max = grades[0];
+        double min = grades[0];
 
-        // Where the loop begins executing remaining grades
-        for (int i = 2; i <= totalGrades; i++) {
-            System.out.print("Enter grade " + i + ": ");
-            double grade = input.nextDouble();
-
+        // Loop through remaining grades to compute statistics.
+        for (int i = 1; i < TOTAL_GRADES; i++) {
+            double grade = grades[i];
             sum += grade;
 
             if (grade > max) {
-                max = grade;
+                max = grade; // Update highest grade
             }
             if (grade < min) {
-                min = grade;
+                min = grade; // Update lowest grade
             }
         }
 
-        // Average calculation
-        double average = sum / totalGrades;
+        // Calculate average.
+        double average = sum / TOTAL_GRADES;
 
-        // Display results
+        // Display results.
         System.out.println("\n****** Class Statistics ******");
         System.out.println("Average grade: " + average);
         System.out.println("Highest grade: " + max);
         System.out.println("Lowest grade: " + min);
 
-        input.close();
+        input.close(); 
     }
 }
